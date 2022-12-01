@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HeyURL!</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'heyurl/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'heyurl/style.css' %}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-sm-4">
+      <a class="navbar-brand" href="#">HeyURL!</a>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-8 offset-sm-2">
+
+          <div class="card mb-sm-4">
+            <div class="card-header">
+              Total clicks per day
+            </div>
+            <div class="card-body">
+              {% if clicks_per_day %}
+                {% load humanize %}
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">day</th>
+                      <th scope="col">total of clicks</th>
+       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for day,clicks in clicks_per_day %}
+                      <tr>
+                        
+     
+                        <td>{{ day }}</td>
+                        <td>{{ clicks|intcomma }}</td>
+  
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+              <div class="alert alert-light" role="alert">
+                There are no Total clicks per day in the system yet!
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+
+
+          <div class="card mb-sm-4">
+            <div class="card-header">
+              Total clicks per Browser
+            </div>
+            <div class="card-body">
+              {% if clicks_per_browser %}
+                {% load humanize %}
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">day</th>
+                      <th scope="col">total of browser</th>
+       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for browser,click in clicks_per_browser %}
+                      <tr>
+                        
+     
+                        <td>{{ browser }}</td>
+                        <td>{{ click|intcomma }}</td>
+  
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+              <div class="alert alert-light" role="alert">
+                There are no Total clicks per day in the system yet!
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="card mb-sm-4">
+            <div class="card-header">
+              Total clicks per Browser
+            </div>
+            <div class="card-body">
+              {% if clicks_per_plataform %}
+                {% load humanize %}
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">day</th>
+                      <th scope="col">total of browser</th>
+       
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for plataform, clicks in clicks_per_plataform %}
+                      <tr>
+                        
+     
+                        <td>{{ plataform }}</td>
+                        <td>{{ clicks|intcomma }}</td>
+  
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+              <div class="alert alert-light" role="alert">
+                There are no Total clicks per day in the system yet!
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
